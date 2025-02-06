@@ -1,0 +1,435 @@
+\batchmode
+\documentclass{beamer}
+\RequirePackage{ifthen}
+
+
+
+
+\mode<presentation> {
+
+
+\usetheme{AnnArbor}
+
+
+}
+
+
+\usepackage{graphicx} 
+\usepackage{caption}
+\usepackage{booktabs} 
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+
+
+\usetikzlibrary{arrows.meta, calc}
+
+
+\title[Calculus of Several Variables]{Geometric Interpretation of Derivatives in Higher Dimensions } % The short title appears at the bottom of every slide, the full title is only on the title page
+
+
+\author{Hrisav Sarkar, BSC Mathematics} % Your name
+\institute[Amity] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Department of Mathematics, Amity University, Kolkata, India \\% Your institution for the title page
+\medskip
+\textit{hrisav.sarkar@s.amity.edu } % Your email address
+}
+\date{6 February,2025} % Date, can be changed to a custom date
+
+
+
+
+\usepackage{xcolor}
+
+\usepackage[]{inputenc}
+
+
+
+\makeatletter
+
+\makeatletter
+\count@=\the\catcode`\_ \catcode`\_=8 
+\newenvironment{tex2html_wrap}{}{}%
+\catcode`\<=12\catcode`\_=\count@
+\newcommand{\providedcommand}[1]{\expandafter\providecommand\csname #1\endcsname}%
+\newcommand{\renewedcommand}[1]{\expandafter\providecommand\csname #1\endcsname{}%
+  \expandafter\renewcommand\csname #1\endcsname}%
+\newcommand{\newedenvironment}[1]{\newenvironment{#1}{}{}\renewenvironment{#1}}%
+\let\newedcommand\renewedcommand
+\let\renewedenvironment\newedenvironment
+\makeatother
+\let\mathon=$
+\let\mathoff=$
+\ifx\AtBeginDocument\undefined \newcommand{\AtBeginDocument}[1]{}\fi
+\newbox\sizebox
+\setlength{\hoffset}{0pt}\setlength{\voffset}{0pt}
+\addtolength{\textheight}{\footskip}\setlength{\footskip}{0pt}
+\addtolength{\textheight}{\topmargin}\setlength{\topmargin}{0pt}
+\addtolength{\textheight}{\headheight}\setlength{\headheight}{0pt}
+\addtolength{\textheight}{\headsep}\setlength{\headsep}{0pt}
+\setlength{\textwidth}{349pt}
+\newwrite\lthtmlwrite
+\makeatletter
+\let\realnormalsize=\normalsize
+\global\topskip=2sp
+\def\preveqno{}\let\real@float=\@float \let\realend@float=\end@float
+\def\@float{\let\@savefreelist\@freelist\real@float}
+\def\liih@math{\ifmmode$\else\bad@math\fi}
+\def\end@float{\realend@float\global\let\@freelist\@savefreelist}
+\let\real@dbflt=\@dbflt \let\end@dblfloat=\end@float
+\let\@largefloatcheck=\relax
+\let\if@boxedmulticols=\iftrue
+\def\@dbflt{\let\@savefreelist\@freelist\real@dbflt}
+\def\adjustnormalsize{\def\normalsize{\mathsurround=0pt \realnormalsize
+ \parindent=0pt\abovedisplayskip=0pt\belowdisplayskip=0pt}%
+ \def\phantompar{\csname par\endcsname}\normalsize}%
+\def\lthtmltypeout#1{{\let\protect\string \immediate\write\lthtmlwrite{#1}}}%
+\usepackage[tightpage,active]{preview}
+\newbox\lthtmlPageBox
+\newdimen\lthtmlCropMarkHeight
+\newdimen\lthtmlCropMarkDepth
+\long\def\lthtmlTightVBox#1#2{%
+    \setbox\lthtmlPageBox\vbox{\hbox{\catcode`\_=8 #2}}%
+    \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
+    \lthtmlCropMarkDepth=\dp\lthtmlPageBox
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkHeight:=\the\lthtmlCropMarkHeight}%
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
+    \begin{preview}\copy\lthtmlPageBox\end{preview}}%
+\long\def\lthtmlTightFBox#1#2{%
+    \adjustnormalsize\setbox\lthtmlPageBox=\vbox\bgroup %
+    \let\ifinner=\iffalse \let\)\liih@math %
+    {\catcode`\_=8 #2}%
+    \@next\next\@currlist{}{\def\next{\voidb@x}}%
+    \expandafter\box\next\egroup %
+    \lthtmlCropMarkHeight=\ht\lthtmlPageBox \advance \lthtmlCropMarkHeight 6pt
+    \lthtmlCropMarkDepth=\dp\lthtmlPageBox
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkHeight:=\the\lthtmlCropMarkHeight}%
+    \lthtmltypeout{^^J:#1:lthtmlCropMarkDepth:=\the\lthtmlCropMarkDepth:1ex:=\the \dimexpr 1ex}%
+    \begin{preview}\copy\lthtmlPageBox\end{preview}}%
+    \long\def\lthtmlinlinemathA#1#2\lthtmlindisplaymathZ{\lthtmlTightVBox{#1}{#2}}
+    \def\lthtmlinlineA#1#2\lthtmlinlineZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayA#1#2\lthtmldisplayZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmlinlinemathA#1#2\lthtmlindisplaymathZ{\lthtmlTightVBox{#1}{#2}}
+    \def\lthtmlinlineA#1#2\lthtmlinlineZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayA#1#2\lthtmldisplayZ{\lthtmlTightVBox{#1}{#2}}
+    \long\def\lthtmldisplayB#1#2\lthtmldisplayZ{\\edef\preveqno{(\theequation)}%
+        \lthtmlTightVBox{#1}{\let\@eqnnum\relax#2}}
+    \long\def\lthtmlfigureA#1#2\lthtmlfigureZ{\let\@savefreelist\@freelist
+        \lthtmlTightFBox{#1}{#2}\global\let\@freelist\@savefreelist}
+    \long\def\lthtmlpictureA#1#2\lthtmlpictureZ{\let\@savefreelist\@freelist
+        \lthtmlTightVBox{#1}{#2}\global\let\@freelist\@savefreelist}
+\def\lthtmlcheckvsize{\ifdim\ht\sizebox<\vsize 
+  \ifdim\wd\sizebox<\hsize\expandafter\hfill\fi \expandafter\vfill
+  \else\expandafter\vss\fi}%
+\providecommand{\selectlanguage}[1]{}%
+\makeatletter \tracingstats = 1 
+\providecommand{\Alpha}{\textrm{A}}
+\providecommand{\Eta}{\textrm{H}}
+\providecommand{\Kappa}{\textrm{K}}
+\providecommand{\Iota}{\textrm{J}}
+\providecommand{\Mu}{\textrm{M}}
+\providecommand{\Epsilon}{\textrm{E}}
+\providecommand{\Beta}{\textrm{B}}
+\providecommand{\Omicron}{\textrm{O}}
+\providecommand{\Tau}{\textrm{T}}
+\providecommand{\Rho}{\textrm{R}}
+\providecommand{\Nu}{\textrm{N}}
+\providecommand{\Chi}{\textrm{X}}
+\providecommand{\omicron}{\textrm{o}}
+\providecommand{\Zeta}{\textrm{Z}}
+
+
+\begin{document}
+\pagestyle{empty}\thispagestyle{empty}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hsize=\the\hsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength vsize=\the\vsize}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength hoffset=\the\hoffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength voffset=\the\voffset}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topmargin=\the\topmargin}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength topskip=\the\topskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headheight=\the\headheight}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength headsep=\the\headsep}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength parskip=\the\parskip}\lthtmltypeout{}%
+\lthtmltypeout{latex2htmlLength oddsidemargin=\the\oddsidemargin}\lthtmltypeout{}%
+\makeatletter
+\if@twoside\lthtmltypeout{latex2htmlLength evensidemargin=\the\evensidemargin}%
+\else\lthtmltypeout{latex2htmlLength evensidemargin=\the\oddsidemargin}\fi%
+\lthtmltypeout{}%
+\makeatother
+\setcounter{page}{1}
+\onecolumn
+
+% !!! IMAGES START HERE !!!
+
+{\newpage\clearpage
+\lthtmlfigureA{frame16}%
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame23}%
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+    \item \textbf{Overview:}
+      \begin{itemize}
+        \item Extends the concept of derivatives from one-dimensional calculus to functions of several variables.
+        \item Provides a framework for understanding how functions change along multiple directions.
+      \end{itemize}
+    \item \textbf{Key Ideas:}
+      \begin{itemize}
+        \item \textbf{Linear Approximation:} The derivative at a point is the best linear approximation of the function near that point.
+      \end{itemize}
+    \item \textbf{Why It Matters:}
+      \begin{itemize}
+        \item \textbf{Visualization:} Offers intuitive geometric insights into the behavior of multivariable functions.
+        \item \textbf{Applications:} Fundamental in optimization, solving differential equations and modeling real-world phenomena.
+      \end{itemize}
+  \end{itemize}
+\par
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame42}%
+\begin{frame}
+% latex2html id marker 42
+[allowframebreaks]
+\frametitle{Geometric Meaning of the derivative of a vector Function}
+\par
+The geometric meaning of the derivative of a vector function is closely related to the concept of the rate of change and the tangent vector.
+\begin{itemize}
+\item \textcolor{blue}{\textit{Rate of change of position}}:
+\par
+\begin{block}{}
+    Let $r:\mathbb{R}\rightarrow \mathbb{R}^n$, where $r$\  is differentiable meaning $r(t)=(r_1(t),r_2(2),\cdots ,r_n(t))$\  and all $r_i(t)$\  such that $r_i:\mathbb{R}\rightarrow \mathbb{R}$\  are differentiable functions, and $r'(t)=(r_1'(t),r_2'(2),\cdots ,r_n'(t))$\  describes how the position of the vector-valued function $r(t)$\  changes with respect to the parameter $t$.
+\end{block}
+\par
+\item \textcolor{blue}{\textit{Tangent Vector}}: 
+\par
+\begin{block}{}
+    $r'(t)$\  at a specific point on the curve indicates the direction of the tangent line to the curve at that point.
+\end{block}
+\par
+\item \textcolor{blue}{\textit{Visualisation in 3D and 2D Spaces}}: \\
+\begin{block}{}
+    If a particle moving along a curve, $r'(t)$\  at any point shows how the particle would continue moving if it maintains its current velocity and direction
+\end{block}
+\par
+\end{itemize} 
+Consider the unit circle defined by 
+  \begin{displaymath}
+  r(t) = (\cos t, \sin t).
+  \end{displaymath}
+  Its derivative is 
+  \begin{displaymath}
+  r'(t) = (-\sin t, \cos t),
+  \end{displaymath}
+  Which represents the tangent vector at each point.
+\par
+At \(t=\frac{\pi}{4}\):
+  \begin{displaymath}
+  r\Bigl(\frac{\pi}{4}\Bigr)=\Bigl(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\Bigr),
+  \end{displaymath}
+  \begin{displaymath}
+  r'\Bigl(\frac{\pi}{4}\Bigr)=\Bigl(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\Bigr).
+  \end{displaymath}
+\par
+The tangent line is then given by
+  \begin{displaymath}
+  L(s)=r\Bigl(\frac{\pi}{4}\Bigr) + s\,r'\Bigl(\frac{\pi}{4}\Bigr)
+  = \Bigl(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\Bigr) + s\Bigl(-\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\Bigr),
+  \quad s\in\mathbb{R}.
+  \end{displaymath}
+\begin{center}
+\par
+\begin{tikzpicture}[scale=2]
+  % Draw coordinate axes
+  \draw[->] (-1.2,0) -- (1.2,0) node[right] {$x$};
+  \draw[->] (0,-1.2) -- (0,1.2) node[above] {$y$};
+\par
+\draw[thick,blue] (0,0) circle (1);
+\par
+\coordinate (P) at ({cos(45)}, {sin(45)});
+\par
+\filldraw[red] (P) circle (0.02);
+  \node[above right] at (P) {$r(t)$};
+\par
+\pgfmathsetmacro{\dx}{-sin(45)}
+  \pgfmathsetmacro{\dy}{cos(45)}
+\par
+\draw[->,red,thick] (P) -- ++({\dx/2},{\dy/2}) node[right] {$r'(t)$};
+\par
+\draw[dashed,red] plot[domain=-1:1] 
+    ({cos(45) + \dx*\x},{sin(45) + \dy*\x});
+\end{tikzpicture}
+\end{center}
+\captionof{figure}{A unit circle with its tangent vector and the tangent line at $t=\pi/4$.}
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{section}
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame116}%
+\begin{frame}{Understanding the Gradient of a Function}
+\par
+\textbf{What is the Gradient?} \\
+    The \textbf{gradient} of a function is a vector that tells us two things:
+    \begin{itemize}
+        \item \textbf{Direction} – Where the function increases the fastest.
+        \item \textbf{Steepness} – How fast the function increases in that direction.
+    \end{itemize}
+\par
+Mathematically, for a function \( f(x, y) \), the gradient is written as:
+    \begin{displaymath}
+    \nabla f = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right)
+    \end{displaymath}
+    This means:
+    \begin{itemize}
+        \item \( \frac{\partial f}{\partial x} \) tells how much \( f \) changes as we move in the \( x \)-direction.
+        \item \( \frac{\partial f}{\partial y} \) tells how much \( f \) changes as we move in the \( y \)-direction.
+    \end{itemize}
+\par
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame136}%
+\begin{frame}{Example: Climbing a Hill}
+    Imagine you are hiking on a hill where the height at any point is given by \( f(x, y) \).
+    \begin{itemize}
+        \item The \textbf{gradient} tells you the steepest path to climb up.
+        \item The bigger the gradient’s length, the steeper the climb.
+    \end{itemize}
+\par
+\textbf{Mathematical Example:} If \( f(x, y) = x^2 + y^2 \), then:
+    \begin{displaymath}
+    \nabla f = (2x, 2y)
+    \end{displaymath}
+    \begin{itemize}
+        \item At \( (1,1) \), the gradient is \( (2,2) \), meaning the function increases fastest in the \((1,1)\) direction.
+        \item At \( (0,0) \), the gradient is \( (0,0) \), meaning it’s a flat point (no steepest direction).
+    \end{itemize}
+\par
+\centering
+    % \includegraphics[width=0.5\linewidth]{gradienthill.png} % Add a relevant figure here
+\par
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame146}%
+\begin{frame}{Geometric Meaning}
+    \begin{itemize}
+        \item The \textbf{gradient vector} always points in the direction where the function increases the fastest.
+        \item The \textbf{steepness} (magnitude of the gradient) tells how quickly the function increases.
+        \item The gradient is \textbf{perpendicular} to the level curves (contour lines).
+    \end{itemize}
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+\stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{frame155}%
+\begin{frame}{Physical Meaning (Real-World Examples)}
+    The gradient is useful in many areas of science:
+    \begin{itemize}
+        \item \textbf{Heat Flow:} If \( f(x, y) \) represents temperature, then \( \nabla f \) shows the direction where heat increases fastest.
+        \item \textbf{Electric Fields:} The gradient of voltage tells us how electric potential changes in space.
+        \item \textbf{Water Flow:} Water flows \textbf{downhill}, opposite to the gradient of elevation.
+    \end{itemize}
+\par
+\centering
+    % \includegraphics[width=0.5\linewidth]{gradient_real_world.png} % Add a relevant figure here
+\par
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{frame164}%
+\begin{frame}
+% latex2html id marker 164
+[allowframebreaks]{Gradient of a Scalar-Valued Function Figure}
+\par
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        % Define the function f(x, y) = x^2 + y^2
+        \begin{axis}[
+            view={60}{30},
+            xlabel={$x$},
+            ylabel={$y$},
+            zlabel={$f(x,y)$},
+            domain=-2:2,
+            y domain=-2:2,
+            samples=20,
+            grid=major,
+            colormap/viridis,
+            colorbar,
+            colorbar style={title={$f(x,y)$}},
+            title={$f(x,y) = x^2 + y^2$}
+        ]
+            \addplot3[
+                surf,
+                opacity=0.7
+            ] {x^2 + y^2};
+        \end{axis}
+\par
+% Function value at (x0, y0)
+          % Partial derivative df/dx at (x0, y0)
+          % Partial derivative df/dy at (x0, y0)
+\par
+\begin{scope}[shift={(2,1)}]
+            % Axes in xy-plane
+            \draw[->] (-2.5, 0) -- (2.5, 0) node[right] {$x$};
+            \draw[->] (0, -2.5) -- (0, 2.5) node[above] {$y$};
+\par
+\fill[gray!20, opacity=0.5] 
+                (1-1, 1-1) -- (1+1, 1-1) -- 
+                (1+1, 1+1) -- (1-1, 1+1) -- cycle;
+\par
+\draw[->, blue, very thick] (1, 1) -- ++(2 * 1/3, 2 * 1/3) node[right] {$\nabla f$};
+\par
+\draw[->, red, thick] (1, 1) -- ++(1, 0) node[right] {$\mathbf{T_1}$};
+            \draw[->, red, thick] (1, 1) -- ++(0, 1) node[above] {$\mathbf{T_2}$};
+\par
+\node[fill=black, circle, inner sep=1.5pt] at (1, 1) {};
+            \node[below left] at (1, 1) {$(x_0, y_0)$};
+        \end{scope}
+\par
+\end{tikzpicture}
+    \caption{Illustration of the function \( f(x,y) = x^2 + y^2 \), its tangent plane at \( (1,1) \), and the gradient vector perpendicular to the plane.}
+\end{figure}
+\par
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{frame197}%
+\begin{frame}
+\Huge {\centerline{The End}}
+\end{frame}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+
+\end{document}
