@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Geometric Meaning of Derivative of a Vector Function }{4}{0}{2}
+\beamer@sectionintoc {3}{Significance of Gradient}{8}{0}{3}
+\beamer@subsectionintoc {3}{1}{Understanding the Gradient of a Function}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Example: Climbing a Hill}{9}{0}{3}
+\beamer@subsectionintoc {3}{3}{Geometric Meaning}{10}{0}{3}
+\beamer@subsectionintoc {3}{4}{Physical Meaning (Real-World Examples)}{11}{0}{3}
